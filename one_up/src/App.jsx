@@ -17,7 +17,6 @@ function App() {
   return (
     <>
       <NavBar/>
-      <HomePage/>
       <Routes>
         <Route path="/play5" element={<Playstation5/>}/>
         <Route path="/play4" element={<Playstation4/>}/>
