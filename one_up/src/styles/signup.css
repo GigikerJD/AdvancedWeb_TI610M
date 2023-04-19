@@ -1,0 +1,13 @@
+.signup-form {
+    display:grid;
+    align-items: center;
+}
+
+.signup-form input {
+    border: none;
+    background: none;
+    overflow:hidden;
+    width: 5rem;
+    height: 4rem;
+    text-align: center;
+}
