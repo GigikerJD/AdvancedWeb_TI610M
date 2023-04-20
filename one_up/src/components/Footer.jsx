@@ -1,4 +1,10 @@
 import "../styles/footer.css";
+import Facebook from "../images/social-icons/facebook.png";
+import Instagram from "../images/social-icons/instagram.png";
+import Twitter from "../images/social-icons/twitter.png";
+import Youtube from "../images/social-icons/youtube.png";
+import {Link} from "react-router-dom";
+
 
 const Footer = () => (
     <>
@@ -7,16 +13,24 @@ const Footer = () => (
                <div className="icons">
                 <ul>
                     <li>
-                        <img src="../images/social-icons/facebook.png" alt="Facebook" className="social-icon"/>
+                        <Link to="https://facebook.com">
+                            <img src={Facebook} className="social-icon" alt="Facebook"/>
+                        </Link>
                     </li>
                     <li>
-                        <img src="../images/social-icons/instagram.png" className="social-icon" alt="Instagram" />
+                        <Link to="https://instagram.com">
+                            <img src={Instagram} className="social-icon" alt="Instagram" />
+                        </Link>
                     </li>
                     <li>
-                        <img src="../images/social-icons/twitter.png" className="social-icon" alt="Twitter" />
+                        <Link to="https://twitter.com">
+                            <img src={Twitter} className="social-icon" alt="Twitter" />
+                        </Link>
                     </li>
                     <li>
-                        <img src="../images/social-icons/youtube.png" className="social-icon" alt="Youtube" />
+                        <Link to="Discord">
+                            <img src={Youtube} className="social-icon" alt="Youtube" />
+                        </Link>
                     </li>
                 </ul>
                </div>

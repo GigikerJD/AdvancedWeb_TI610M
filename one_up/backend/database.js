@@ -32,19 +32,8 @@ async function login (email, password){
     return rows;
 }
 
-
-
-
-
-
-
-
-
-
 //const exe1 = await pool.query("select * from newuser where country LIKE 'F%' OR 'f%'");
 //console.log(exe1);
-
-
 
 (async () => {
     const result = await login("nelgie.ferrol94@gmail.com", "password1");

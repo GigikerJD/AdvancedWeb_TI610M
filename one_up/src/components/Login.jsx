@@ -1,10 +1,21 @@
 import "../styles/login.css";
 import {Link} from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Register from "./Register";
 
-
 const Login = () => {
+    /*
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        fetch("/api/login")
+        .then(response => response.json())
+        .then(data => setData(data));
+    }, []);
+    */
+
+    const logButton = document.getElementById("log");
+    
 
     return(
         <>
