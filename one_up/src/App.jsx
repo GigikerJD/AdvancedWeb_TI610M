@@ -1,11 +1,10 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Playstation4 from "./components/Playstation4";
 import Playstation5 from "./components/Playstation5";
 import XBOX1 from "./components/XBOX1";
 import XBOXS from "./components/XBOXS";
 import NintendoSwitch from "./components/Nintendo";
 import "../src/App.css";
-import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/hOME";
