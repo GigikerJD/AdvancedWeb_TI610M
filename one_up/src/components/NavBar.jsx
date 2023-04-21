@@ -6,20 +6,20 @@ import App from "../App";
 const NavBar = () => {
     return (
         <>
-        <header id="main-head">
-            <div className="wallpaper">
-                <Link to="/" element={<App/>}>
-                    <img id="main-icon" src={myWallpaper} alt="1UP"/>
-                </Link>
-            </div>
-            <nav className="main-nav">
-                <ul>
-                    <li className="blur">
-                        <Link to="/home/login">Log in</Link>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+            <header id="main-head">
+                <div className="wallpaper">
+                    <Link to="/" element={<App/>}>
+                        <img id="main-icon" src={myWallpaper} alt="1UP"/>
+                    </Link>
+                </div>
+                <nav className="main-nav">
+                    <ul>
+                        <li className="blur">
+                            <Link to="/home/login">Log in</Link>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
         </>
     )
 }
