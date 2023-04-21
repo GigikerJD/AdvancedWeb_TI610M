@@ -28,7 +28,7 @@ const Footer = () => (
                         </Link>
                     </li>
                     <li>
-                        <Link to="https://discord.com">
+                        <Link to="https://youtube.com">
                             <img src={Youtube} className="social-icon" alt="Youtube" />
                         </Link>
                     </li>

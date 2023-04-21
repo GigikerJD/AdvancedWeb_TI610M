@@ -2,7 +2,7 @@ import "../styles/games.css";
 
 const Playstation4 = () => (
     <>
-        <h1 className="title">Playstation 4 component</h1>
+        <h1>Playstation 4 component</h1>
     </>
 );
 

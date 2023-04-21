@@ -48,7 +48,7 @@
   transition: 1s step-start;
 }
 
-.main-form .log-button {
+.main-form #log-button {
   margin-bottom: 1em;
   border: none;
   outline: none;
@@ -61,7 +61,7 @@
   transition: 0.25s ease-in;
 }
 
-.main-form .log-button:hover {
+.main-form #log-button:hover {
   background-color: #adadad;
   letter-spacing: 1px;
 }

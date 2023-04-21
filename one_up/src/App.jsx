@@ -11,7 +11,7 @@ import Register from "./components/Register";
 import Home from "./components/hOME";
 
 
-function App() {
+const App = () => {
   return (
     <>
       <Home/>

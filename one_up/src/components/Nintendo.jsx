@@ -2,7 +2,7 @@
 
 const NintendoSwitch = () => (
     <>
-    <h1>Nintendo Switch component</h1>
+        <h1>Nintendo Switch component</h1>
     </>
 );
 
