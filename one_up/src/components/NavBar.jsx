@@ -1,13 +1,16 @@
 import "../styles/header.css";
 import {Link} from "react-router-dom";
 import myWallpaper from "../images/1up_light.png";
+import App from "../App";
 
 const NavBar = () => {
     return (
         <>
         <header id="main-head">
             <div className="wallpaper">
-                <img id="main-icon" src={myWallpaper} alt="1UP"/>
+                <Link to="/" element={<App/>}>
+                    <img id="main-icon" src={myWallpaper} alt="1UP"/>
+                </Link>
             </div>
             <nav className="main-nav">
                 <ul>

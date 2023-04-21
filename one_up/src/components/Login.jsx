@@ -24,7 +24,7 @@ const Login = () => {
                 <input type="text" name="username" id="username" placeholder="Username"/>
                 <input type="password" name="password" id="password" placeholder="Type password"/>
                 <button type="submit" className="log-button">Log in</button>
-                <Link to={Register} id="log">Not a member ?</Link>
+                <Link to="/home/signup" element={Register} id="log">Not a member ?</Link>
             </form>
         </>
     )
