@@ -1,24 +1,22 @@
 <?php 
     include "../connection.php";
 
-    if(isset($_GET["login"])){
-        $username = $_GET[""];
-        $password = $_GET[""];
+    if(isset($_GET["log-button"])){
+        $username = $_GET["username"];
+        $password = $_GET["password"];
 
-        if($username != "" && $password == "") echo "<span id=msg>Password must not be empty !</span>";
-        if($username == "" && $password != "") echo "<span id=msg>Email must not be empty !</span>";
 
         if($username != "" && $password != ""){
-            $sql = "SELECT username, password FROM registereduser";
+            $sql = "SELECT username, password FROM registereduser where username = '$username' AND password = '$password'";
             $userExists = "SELECT username from registereduser where EXISTS (
                 SELECT username from registered where username = '$username
             )";
             $result = $conn->query($sql);
             if($result === TRUE){
                 echo "<span id=start_session>Login successfull !</span>";
-            }else if($userExists === TRUE && $password){
-                echo "<span id=start_session>Password is incorrect !</span>";
             }
         }
     }
+
+    var_export([$username, $password, $sql, $result], true)
 ?>

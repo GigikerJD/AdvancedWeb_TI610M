@@ -2,17 +2,33 @@ import "../styles/login.css";
 import {Link} from "react-router-dom";
 import { useEffect, useState } from "react";
 import Register from "./Register";
+import Home from "./Home";
 
 const Login = () => {
 
-    const [username, setUsername] = useState(["", ""]);
-    const [password, setPassword] = useState(["", ""]);
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Username : ", username);
-        console.log("Password : ", password);
-    }
+        fetch(`.api/login.php?username=${username}&password=${password}`)
+          .then(response => response.text())
+          .then(data => {
+            console.log(data);
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      };
+
+    useEffect(() => {
+        const logButton = document.getElementById("log-button");
+        const user = document.getElementById("username");
+        const password = document.getElementById("password");
+        if(user.value != "" && password.value != ""){
+          logButton.disabled = false;
+        }else{ logButton.disabled = true;}
+    }, [username, password])
 
     return(
         <>
@@ -33,12 +49,17 @@ const Login = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}/>
                 
-                <button type="button" id="log-button" onClick={handleSubmit}>Log in</button>
+                <button type="button"
+                    name="log-button" 
+                    id="log-button" 
+                    disabled={true}
+                    onClick={handleSubmit}>
+                        Log in
+                </button>
                 <Link to="/home/register" element={<Register/>} id="log">Not a member ?</Link>
             </form>
         </>
     )
 }
-
 
 export default Login;
