@@ -11,10 +11,21 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch(`.api/login.php?username=${username}&password=${password}`)
+        fetch(`/backend/api/login.php?username=${username}&password=${password}`)
           .then(response => response.text())
           .then(data => {
-            console.log(data);
+            if(data === "Login successful"){
+              //things to do
+              console.log("Login successful");
+            }
+            else if(data === "Incorrect password"){ 
+              //things to do
+              console.log("Incorrect password");
+            }
+            else{
+              //things to do
+              console.log("Error: " + data);
+            }
           })
           .catch(error => {
             console.log(error);
