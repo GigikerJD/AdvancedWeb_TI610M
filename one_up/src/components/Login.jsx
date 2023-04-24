@@ -1,6 +1,7 @@
 import "../styles/login.css";
 import {Link} from "react-router-dom";
 import { useEffect, useState } from "react";
+import axios from "axios";
 import Register from "./Register";
 import Home from "./Home";
 
@@ -8,28 +9,20 @@ const Login = () => {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-
+    
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch(`/backend/api/login.php?username=${username}&password=${password}`)
-          .then(response => response.text())
-          .then(data => {
-            if(data === "Login successful"){
-              //things to do
-              console.log("Login successful");
-            }
-            else if(data === "Incorrect password"){ 
-              //things to do
-              console.log("Incorrect password");
-            }
-            else{
-              //things to do
-              console.log("Error: " + data);
-            }
-          })
-          .catch(error => {
-            console.log(error);
-          });
+        const logsession = axios.get("api/users/${username}-${password}");
+        logsession.then(data => {
+          if(data === "Login successful"){
+            console.log("Login successful");
+            window.location.href = "/home";
+          }else if(data === "Wrong password !"){
+            console.log("Wrong password !");
+          }else{
+            console.log("Account does not exist");
+          }
+        })
       };
 
     useEffect(() => {

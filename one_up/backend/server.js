@@ -21,6 +21,13 @@ app.get('/hello', (req, res) => {
     res.send("Hello from express.js");
 })
 
+app.get('home', (req, res) => {
+    res.send("Hi, I'm in the home component !");
+})
+
+
+
+/*
 app.put('/api/articles/:name/upvote', (req,res) => {
     const {name} = req.params;
     const article = articlesInfo.find(a => a.name === name);
@@ -31,6 +38,7 @@ app.put('/api/articles/:name/upvote', (req,res) => {
         res.send("That article doesn't exist");
     }
 })
+*/
 
 app.listen(port, () => {
     console.log("Server running on port " + port);
