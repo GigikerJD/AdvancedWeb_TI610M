@@ -1,4 +1,5 @@
 import express from "express";
+import "./api/users";
 
 let articlesInfo = [{
     name: 'learn-react',

@@ -7,7 +7,7 @@ import NintendoSwitch from "./components/Nintendo";
 import "../src/App.css";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import Home from "./components/hOME";
+import Home from "./components/Home";
 
 
 const App = () => {

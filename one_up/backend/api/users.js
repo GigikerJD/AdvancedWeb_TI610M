@@ -1,4 +1,4 @@
-import express from "express";
+import axios from "axios";
 import mysql from "mysql2";
 
 const conn = mysql.createConnection({
@@ -16,6 +16,3 @@ export async function login(username, password){
     }
     else console.error("Account does not exist");
 }
-
-const result = login("gigikerjd", "");
-console.log(result);

@@ -11,18 +11,24 @@ const Login = () => {
     const [password, setPassword] = useState("");
     
     const handleSubmit = (e) => {
+        /*
         e.preventDefault();
-        const logsession = axios.get("api/users/${username}-${password}");
-        logsession.then(data => {
-          if(data === "Login successful"){
-            console.log("Login successful");
-            window.location.href = "/home";
-          }else if(data === "Wrong password !"){
-            console.log("Wrong password !");
-          }else{
-            console.log("Account does not exist");
-          }
-        })
+        axios.get("/backend/api/users")
+          .then((response) => {
+            console.log(response.text);
+          })
+          .then(data => {
+            if(data === "Login successful"){
+              console.log("Login successful");
+              window.location.href = "/home";
+            }else if(data === "Wrong password !"){
+              console.log("Wrong password !");
+            }else{
+              console.log("Account does not exist");
+            }
+          })
+          .catch(error => console.log(error))
+        */
       };
 
     useEffect(() => {
@@ -32,7 +38,7 @@ const Login = () => {
         if(user.value != "" && password.value != ""){
           logButton.disabled = false;
         }else{ logButton.disabled = true;}
-    }, [username, password])
+    }); 
 
     return(
         <>
@@ -56,7 +62,6 @@ const Login = () => {
                 <button type="button"
                     name="log-button" 
                     id="log-button" 
-                    disabled={true}
                     onClick={handleSubmit}>
                         Log in
                 </button>

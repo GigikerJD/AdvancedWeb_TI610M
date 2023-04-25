@@ -14,7 +14,7 @@
                 $sql = "SELECT username, password FROM registered WHERE username = '$username' AND password='$password'";
                 $result = $conn->query($sql);
                 if($result->num_rows > 0) echo "Login successful";
-                else "Incorrect password"; 
+                else echo "Incorrect password"; 
             }
         }else echo "User does not exist";
     }
