@@ -8,9 +8,8 @@ import {Link} from "react-router-dom";
 
 const Footer = () => (
     <>
-        <div className="inside-footer">
-            <footer id="main-footer">
-               <div className="icons">
+        <footer id="main-footer">
+            <div className="icons">
                 <ul>
                     <li>
                         <Link to="https://facebook.com">
@@ -33,9 +32,8 @@ const Footer = () => (
                         </Link>
                     </li>
                 </ul>
-               </div>
-            </footer>
-        </div>
+            </div>
+        </footer>
     </>
 );
 

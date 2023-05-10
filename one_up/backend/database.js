@@ -17,7 +17,7 @@ const pool = mysql.createPool({
 
 async function signup(email, password, firstname, lastname){
     let hashed = bcrypt.hash(password, 10); //hashing the password to improve security
-    const [rows, fields] = await pool.query("select * from newuser where email = ? AND password = ?", [email, hashed]);
+    const [rows, fields] = await pool.query("select * from registereduser where email = ? AND password = ?", [email, hashed]);
     if(rows.length() == 0){
         await pool.query("insert into newuser(username, password, firstname, lastname) values(?, ?, ?, ?)", [email, hashed, firstname, lastname]);
     }else{
@@ -27,7 +27,7 @@ async function signup(email, password, firstname, lastname){
 }
 
 async function login (email, password){
-    const [rows, fields] = await pool.query("select email, password from newuser where email = ? AND password = ?",
+    const [rows, fields] = await pool.query("select email, password from registereduser where email = ? AND password = ?",
     [email, password]);
     return rows;
 }

@@ -5,13 +5,17 @@ import XBOX1 from "./XBOX1";
 import XBOXS from "./XBOXS";
 import NintendoSwitch from "./Nintendo";
 import myWallpaper from "../images/1up_light.png";
+import Enveloppe from "../images/icons/enveloppe.png";
+import App from "../App";
 
 const NavGames = () => {
     return (
         <>
             <header id="main-head">
                 <div className="wallpaper">
-                    <img id="main-icon" src={myWallpaper} alt="1UP"/>
+                    <Link to="/" element={<App/>}>
+                        <img id="main-icon" src={myWallpaper} alt="1UP"/>
+                    </Link>
                 </div>
                 <nav className="main-nav">
                     <ul>
@@ -31,7 +35,9 @@ const NavGames = () => {
                             <Link to="/nintendo_switch" element={<NintendoSwitch/>}>Nintedo Switch</Link>
                         </li>
                         <li>
-                            <img src="../images/icons/enveloppe.png" alt="messages"/>
+                            <Link>
+                                <img id="enveloppe" src={Enveloppe} alt="messages"/>
+                            </Link>
                         </li>
                         <li className="profile">
                             <span id="logged-name"></span>

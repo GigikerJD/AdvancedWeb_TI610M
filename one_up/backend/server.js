@@ -1,47 +1,24 @@
 import express from "express";
-import "./api/users";
+import bcrypt from "bcrypt";
+import { login } from "./api/users";
 
-let articlesInfo = [{
-    name: 'learn-react',
-    upvotes: 0,
-},{
-    name: 'learn*node',
-    upvotes: 0,
-},{
-    name: 'mongodb',
-    upvotes: 0,
-}]
 
-/* demo */
 const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(express.json());
 
-app.get('/hello', (req, res) => {
-    res.send("Hello from express.js");
-})
+// Define API endpoint for login
+app.get('/login', async (req, res) => {
+    const { username, password } = req.body;
+    const response = await login(username, password);
+    res.json({ success: true, message: response });
+  });
+  
 
-app.get('home', (req, res) => {
-    res.send("Hi, I'm in the home component !");
-})
+  app.get("/ps5", )
 
-
-
-/*
-app.put('/api/articles/:name/upvote', (req,res) => {
-    const {name} = req.params;
-    const article = articlesInfo.find(a => a.name === name);
-    if(article){
-        article.upvotes += 1;
-        res.send('The ' + name + ' article now has ' + article.upvotes + ' upvotes');
-    }else{
-        res.send("That article doesn't exist");
-    }
-})
-*/
-
-app.listen(port, () => {
-    console.log("Server running on port " + port);
+// Start the server
+app.listen(5173, () => {
+  console.log('Server started on port 5173');
 });
-

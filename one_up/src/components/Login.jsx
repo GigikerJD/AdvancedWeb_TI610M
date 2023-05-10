@@ -1,7 +1,6 @@
 import "../styles/login.css";
 import {Link} from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import Register from "./Register";
 import Home from "./Home";
 
@@ -9,26 +8,28 @@ const Login = () => {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    
+
     const handleSubmit = (e) => {
-        /*
         e.preventDefault();
-        axios.get("/backend/api/users")
-          .then((response) => {
-            console.log(response.text);
-          })
+        fetch(`/backend/api/login.php?username=${username}&password=${password}`)
+          .then(response => response.text())
           .then(data => {
             if(data === "Login successful"){
+              //things to do
               console.log("Login successful");
-              window.location.href = "/home";
-            }else if(data === "Wrong password !"){
-              console.log("Wrong password !");
-            }else{
-              console.log("Account does not exist");
+            }
+            else if(data === "Incorrect password"){ 
+              //things to do
+              console.log("Incorrect password");
+            }
+            else{
+              //things to do
+              console.log("Error: " + data);
             }
           })
-          .catch(error => console.log(error))
-        */
+          .catch(error => {
+            console.log(error);
+          });
       };
 
     useEffect(() => {
@@ -38,34 +39,36 @@ const Login = () => {
         if(user.value != "" && password.value != ""){
           logButton.disabled = false;
         }else{ logButton.disabled = true;}
-    }); 
+    }, [username, password])
 
     return(
         <>
+        <h1>"Give your game a new life"</h1>
             <form method="GET" className="main-form">
-                <h3 id="login-title">Login Form</h3>
+                <h3 id="login-title">Connexion</h3>
 
                 <input type="text" 
                     name="username" 
                     id="username" 
-                    placeholder="Username"
+                    placeholder="Enter username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}/>
 
                 <input type="password" 
                     name="password" 
                     id="password" 
-                    placeholder="Type password"
+                    placeholder="Enter password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}/>
                 
                 <button type="button"
                     name="log-button" 
                     id="log-button" 
+                    disabled={true}
                     onClick={handleSubmit}>
                         Log in
                 </button>
-                <Link to="/home/register" element={<Register/>} id="log">Not a member ?</Link>
+                Not a member ?<Link to="/home/register" element={<Register/>} id="log">Sign up</Link>
             </form>
         </>
     )

@@ -6,11 +6,13 @@
 ------------------------------- */
 
 #main-head {
-    background-color: #333;
+    background-color: #05A457;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
     display: flex;
+    top: 0%;
+    height: 0px;
     justify-content: space-between;
     align-items: center;    
     overflow-x: hidden;
@@ -42,13 +44,13 @@
     color:rgb(251, 251, 251);
 }
 
-
 .main-nav ul li a:hover{
     letter-spacing: 2px;
-    transition: ease-out 0.5s;
-    background-color: rgb(51, 179, 57);
-    color: #fff;
-    padding: 1em;
+    transition: ease-out 0.25s;
+    background-color: white;
+    color: #05A457;
+    padding: 5px;
+    border-radius: 10px;
 }
 
 .main-nav ul li:hover{
@@ -57,7 +59,12 @@
 }
 
 .blur {
-    opacity: 60%;
+    position: absolute;
+    right: 20px;
+    top: 25px;
+    width: 80px;
+    border-radius: 10px;
+    border: #fff solid 1px;
 }
 
 
@@ -65,5 +72,7 @@
 
 .wallpaper img{
     display: block;
-    width: 120px;
+    position: absolute;
+    width: 80px;
+    margin-top: 0%;
 }

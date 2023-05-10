@@ -1,20 +1,27 @@
-
+h1{
+  font-family: Parkavenue, cursive;;
+  color: white;
+  margin-top: -130px;
+  text-align: center;
+  vertical-align: middle;
+}
 .main-form {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 25%;
-    max-width: 400px;
+    width: 400px;
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #3f3f3f;
-    color: #fff;
+    color: rgba(255,255,255);
     padding: 2em;
     border-radius: 30px;
+    border: 6px solid white;
+    box-shadow: 2px 2px #047940;
 }
 
 @media (max-width: 600px) {
@@ -33,18 +40,19 @@
   outline: none;
   font-size: 2.3vh;
   font-weight: 600;
-  text-align: center;
-  background-color: green;
-  color: #fff;
+  text-align: left;
+  background-color: white;
+  color: #05A457;
   padding: 1%;
+  box-shadow: 2px 2px #047940;
 }
 
 .main-form input::placeholder {
-  color: #fff;
+  color: #3eb87d;
 }
 
 .main-form input:hover {
-  background-color: #282828;
+  background-color: #8ee2ba;
   transition: 1s step-start;
 }
 
@@ -59,10 +67,12 @@
   height: 30px;
   font-size: 1em;
   transition: 0.25s ease-in;
+  box-shadow: 2px 2px #047940;
+
 }
 
 .main-form #log-button:hover {
-  background-color: #adadad;
+  background-color: #d9d8d8;
   cursor: pointer;
   letter-spacing: 1px;
 }
@@ -77,4 +87,5 @@
 
 .main-form #log:hover {
   letter-spacing: 1px;
+  color:#3fd18b;
 }
