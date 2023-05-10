@@ -7,10 +7,7 @@ import NintendoSwitch from "./components/Nintendo";
 import "../src/App.css";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
 import HomePage from "./components/DisplayPage";
-import NavGames from "./components/NavGames";
 import Home from "./components/Home";
 
 

@@ -5,18 +5,17 @@ const Playstation5 = () => {
 
     const[games, setGames] = useState([]);
 
-    useEffect( () => {
+    useEffect(() => {
         const fetchData = async () => {
             try{
-                const response = await axios.get("api/ps5");
-                setGames(response.data);
-            }
-            catch(error){
+                const response = await fetch("/api/ps5");
+                const data = await response.json();
+                setGames(data);
+            }catch(error){
                 console.log(error);
             }
-        };
-        fetchData();
-    }, [])
+        }
+    });
 
     return(
         <>
