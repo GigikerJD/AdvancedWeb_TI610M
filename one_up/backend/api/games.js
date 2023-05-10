@@ -29,3 +29,8 @@ export async function XBOXS(){
     const[rows, fields] = await conn.query("select * from game where platform = ?", ["XBOX S"]);
     return rows;
 }
+
+export async function NintendoSwitch(){
+    const[rows, fields] = await conn.query("select * from game where platform = ?", ["Nintendo Switch"]);
+    return rows;
+}
