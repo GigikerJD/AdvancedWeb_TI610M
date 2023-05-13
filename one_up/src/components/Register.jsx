@@ -1,6 +1,5 @@
 import "../styles/signup.css";
 import { Link } from "react-router-dom";
-import React from "react";
 import { useState } from "react";
 import Login from "./Login";
 

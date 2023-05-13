@@ -1,30 +1,49 @@
-import { useState, useEffect } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios from "axios";
+import { useState, useEffect } from "react";
+
 
 const Playstation5 = () => {
 
     const[games, setGames] = useState([]);
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchGames = async () => {
             try{
-                const response = await fetch("/api/ps5");
-                const data = await response.json();
-                setGames(data);
+                const response = await axios.get("http://localhost:8000/api/ps5");
+                setGames(response.data);
+                console.log(games);
             }catch(error){
                 console.log(error);
             }
-        }
-    });
+        };
+        fetchGames();
+    }, [])
 
     return(
         <>
             <h1>Playstation 5 component</h1>
-            <ul>
-                {games.map((game) => (
-                    <li key={game.id}>{game.title}</li>
-                ))}
-            </ul>
+            <table id="ps5-games">
+                <tbody>
+                    <tr>
+                        <td>Title</td>
+                        <td>Price</td>
+                        <td>Category</td>
+                        <td>Quantity</td>
+                    </tr>
+
+                    {games.map((game, index) => {
+                        return(
+                            <tr key={index}>
+                                <td>{game.title}</td>
+                                <td>{game.price}</td>
+                                <td>{game.gameTag}</td>
+                                <td>{game.quantity}</td>
+                            </tr>
+                        )
+                    })} 
+                </tbody>                   
+            </table>
         </>
     )
 };

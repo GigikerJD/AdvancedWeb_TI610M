@@ -1,36 +1,39 @@
+/* eslint-disable react/no-unescaped-entities */
 import "../styles/login.css";
 import {Link} from "react-router-dom";
 import { useEffect, useState } from "react";
 import Register from "./Register";
-import Home from "./Home";
+import axios from "axios";
+
 
 const Login = () => {
 
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        fetch(`/backend/api/login.php?username=${username}&password=${password}`)
-          .then(response => response.text())
-          .then(data => {
-            if(data === "Login successful"){
-              //things to do
-              console.log("Login successful");
-            }
-            else if(data === "Incorrect password"){ 
-              //things to do
-              console.log("Incorrect password");
-            }
-            else{
-              //things to do
-              console.log("Error: " + data);
-            }
-          })
-          .catch(error => {
-            console.log(error);
-          });
-      };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:8000/login", {
+        username,
+        password
+      });
+      if (response.data.success) {
+        // Login successful
+        console.log("Login successful");
+        // Perform any necessary actions, such as redirecting the user to another page or storing authentication tokens.
+      } else {
+        // Login failed
+        console.log("Error: " + response.data.message);
+        // Display an error message to the user, e.g., using state variables.
+      }
+    } catch (error) {
+      console.log(error);
+      // Handle any network or server errors.
+    }
+  };
+  
+
 
     useEffect(() => {
         const logButton = document.getElementById("log-button");
@@ -44,7 +47,7 @@ const Login = () => {
     return(
         <>
         <h1>"Give your game a new life"</h1>
-            <form method="GET" className="main-form">
+            <form method="POST" className="main-form">
                 <h3 id="login-title">Connexion</h3>
 
                 <input type="text" 
@@ -64,7 +67,6 @@ const Login = () => {
                 <button type="button"
                     name="log-button" 
                     id="log-button" 
-                    disabled={true}
                     onClick={handleSubmit}>
                         Log in
                 </button>
