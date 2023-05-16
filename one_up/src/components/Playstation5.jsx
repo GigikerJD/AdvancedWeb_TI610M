@@ -10,7 +10,7 @@ import NintendoSwitch from "./Nintendo";
 import Home from "./Home";
 import Login from "./Login";
 import Register from "./Register";
-import "../styles/games.css";
+import "../styles/ps5.css";
 
 
 const Playstation5 = () => {

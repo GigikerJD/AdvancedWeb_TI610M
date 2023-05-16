@@ -9,6 +9,7 @@ import Register from "./Register";
 import Home from "./Home";
 import {Routes, Route} from "react-router-dom";
 import axios from "axios";
+import "../styles/ps4.css";
 
 
 const Playstation4 = () => {

@@ -7,6 +7,8 @@ import XBOXS from "./XBOXS";
 import Login from "./Login";
 import Register from "./Register";
 import NavGames from "./NavGames";
+import "../styles/nintendo.css";
+
 
 const NintendoSwitch = () => {
 
@@ -36,8 +38,8 @@ const NintendoSwitch = () => {
                 <Route path="/home/login" element={<Login/>}/>
                 <Route path="/home/register" element={<Register/>}/>
             </Routes>
-            <h1>Nintendo Switch component</h1>
             <table id="nintendo-games">
+                <caption>Nintendo Switch games</caption>
                 <tbody>
                     <tr>
                         <td>Title</td>

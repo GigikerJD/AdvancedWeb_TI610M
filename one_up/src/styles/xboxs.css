@@ -1,8 +1,4 @@
-/* each css for games component */
-
-
-/* PS5 */
-#ps5-games{
+#xboxs-games{
     margin: auto;
     margin-top: 10vh;
     padding-top: 10vh;
@@ -13,14 +9,13 @@
     table-layout: auto;
 }
 
-#ps5-games caption {
+#xboxs-games caption {
     padding-bottom: 1em;
 }
 
-#ps5-games tr td {
+#xboxs-games tr td {
     border: 3px solid #333;
     border-radius: 10px;
     text-align: center;
     padding: 1em;
 }
-

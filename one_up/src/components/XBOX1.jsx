@@ -8,6 +8,7 @@ import Login from "./Login";
 import Register from "./Register";
 import NintendoSwitch from "./Nintendo";
 import NavGames from "./NavGames";
+import "../styles/xbox1.css";
 
 
 const XBOX1 = () => {

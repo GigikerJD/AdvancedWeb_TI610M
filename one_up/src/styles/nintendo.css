@@ -1,0 +1,21 @@
+#nintendo-games{
+    margin: auto;
+    margin-top: 10vh;
+    padding-top: 10vh;
+    border-collapse:collapse;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 75%;
+    color: white;
+    table-layout: auto;
+}
+
+#nintendo-games caption {
+    padding-bottom: 1em;
+}
+
+#nintendo-games tr td {
+    border: 3px solid #333;
+    border-radius: 10px;
+    text-align: center;
+    padding: 1em;
+}

@@ -55,7 +55,7 @@ const NavGames = () => {
                             </Link>
                         </li>
                         <li>
-                            <img id="profile" src={UserProfile} alt="user" />
+                            <img id="profile" src={UserProfile} alt="user" /><br/>
                             <RedirectButtons/>
                         </li>
                     </ul>
