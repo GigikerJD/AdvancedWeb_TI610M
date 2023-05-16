@@ -1,0 +1,102 @@
+#edit-form {
+  padding: 25px;
+  margin: 25px;
+  box-shadow: 0 2px 5px #000;
+  background: #222;
+  max-width: 400px;
+  width: 100%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+#edit-form label {
+  display: flex; /* Ajout d'une propriété flex pour aligner les éléments */
+  justify-content: space-between; /* Ajout d'une propriété pour espacer les éléments horizontalement */
+  align-items: center; /* Ajout d'une propriété pour aligner les éléments verticalement */
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #05A457;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+  flex: 1; /* Ajout d'une propriété flex pour étirer les champs de formulaire */
+  padding: 8px;
+  margin-left: 10px; /* Ajout d'une marge à gauche pour espacer les champs de formulaire des libellés */
+  border: 1px solid #05A457;
+  outline: none;
+  color: #fff;
+  background: #333;
+  border-radius: 3px;
+}
+
+#edit-profile input[type="text"]::placeholder,
+#edit-profile input[type="number"]::placeholder,
+#edit-profile input[type="date"]::placeholder {
+  color: #666;
+}
+
+#edit-profile button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #05A457;
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  border-radius: 5px;
+}
+
+#edit-profile button[type="submit"]:hover {
+  background: #05A457;
+}
+
+#edit-profile button[type="button"],
+.cancel-button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #222;
+  font-size: 16px;
+  font-weight: 400;
+  color: #05A457;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  border-radius: 5px;
+}
+
+#edit-profile button[type="button"]:hover,
+.button-cancel:hover {
+  background: #333;
+}
+
+
+.edit-button {
+  background: #333;
+  color: #05A457;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: flex-end; /* Ajout d'une propriété pour aligner le bouton à droite */
+  margin-left: 10px; /* Ajout d'une marge à gauche pour espacer le bouton du champ de formulaire */
+}
+
+.edit-button:hover {
+  background: #444;
+}
+
+.cancel-button:hover {
+  background: #444;
+}
+
+.button-container {
+  display: flex; /* Ajout d'une propriété flex pour aligner les boutons horizontalement */
+  justify-content: flex-end; /* Ajout d'une propriété pour aligner les boutons à droite */
+  margin-top: 20px;
+}

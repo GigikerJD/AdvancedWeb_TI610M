@@ -1,14 +1,14 @@
 import "../styles/header.css";
 import {Link} from "react-router-dom";
 import myWallpaper from "../images/1up_light.png";
-import App from "../App";
+import Home from "./Home";
 
 const NavBar = () => {
     return (
         <>
             <header id="main-head">
                 <div className="wallpaper">
-                    <Link to="/" element={<App/>}>
+                    <Link to="/" element={<Home/>}>
                         <img id="main-icon" src={myWallpaper} alt="1UP"/>
                     </Link>
                 </div>

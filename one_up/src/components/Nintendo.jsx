@@ -1,4 +1,11 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
+import {Routes, Route} from "react-router-dom";
+import Playstation5 from "./Playstation5";
+import XBOX1 from "./XBOX1";
+import XBOXS from "./XBOXS";
+import Login from "./Login";
+import Register from "./Register";
 import NavGames from "./NavGames";
 
 const NintendoSwitch = () => {
@@ -21,6 +28,14 @@ const NintendoSwitch = () => {
     return(
         <>
             <NavGames/>
+            <Routes>
+                <Route path="/home/play5" element={<Playstation5/>}/>
+                <Route path="/home/xbox_s" element={<XBOXS/>}/>
+                <Route path="/home/xbox_one" element={<XBOX1/>}/>
+                <Route path="/home/nintendo_switch" element={<NintendoSwitch/>}/>
+                <Route path="/home/login" element={<Login/>}/>
+                <Route path="/home/register" element={<Register/>}/>
+            </Routes>
             <h1>Nintendo Switch component</h1>
             <table id="nintendo-games">
                 <tbody>

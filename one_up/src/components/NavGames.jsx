@@ -1,4 +1,5 @@
 import {Link} from "react-router-dom";
+import { useEffect } from "react";
 import Playstation4 from "./Playstation4";
 import Playstation5 from "./Playstation5";
 import XBOX1 from "./XBOX1";
@@ -7,16 +8,25 @@ import NintendoSwitch from "./Nintendo";
 import myWallpaper from "../images/1up_light.png";
 import Enveloppe from "../images/icons/enveloppe.png";
 import Home from "./Home";
+import {Routes, Route} from "react-router-dom";
 import "../styles/header.css";
 import "../styles/navgames.css";
-
+import UserProfile from "../images/icons/user.png";
+ 
 
 const NavGames = () => {
+
+    useEffect(() => {
+        const userPicture = document.getElementById("profile");
+        userPicture.style.cursor = "pointer";
+    });
+
+
     return (
         <>
             <header id="main-head1">
                 <div className="wallpaper1">
-                    <Link to="/" element={<Home/>}>
+                    <Link to="/navgames" element={<Home/>}>
                         <img id="main-icon1" src={myWallpaper} alt="1UP"/>
                     </Link>
                 </div>
@@ -35,15 +45,15 @@ const NavGames = () => {
                             <Link to="/home/xbox_s" element={<XBOXS/>}>XBOX S</Link>
                         </li>
                         <li className="item 5">
-                            <Link to="/home/nintendo_switch" element={<NintendoSwitch/>}>Nintedo Switch</Link>
+                            <Link to="/home/nintendo_switch" element={<NintendoSwitch/>}>Nintendo Switch</Link>
                         </li>
                         <li>
                             <Link>
                                 <img id="enveloppe" src={Enveloppe} alt="messages"/>
                             </Link>
                         </li>
-                        <li className="profile">
-                            <span id="logged-name"></span>
+                        <li>
+                            <img id="profile" src={UserProfile} alt="user" />
                         </li>
                     </ul>
                 </nav>

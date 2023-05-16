@@ -5,7 +5,10 @@ import bcrypt from "bcrypt";
 
 
 const app = express();
+
 app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 //MySQL connection
@@ -121,6 +124,118 @@ app.get("/api/nintendo", async(req, res) => {
     res.status(500).json({error: "Internal Server Error"});
   }
 })
+
+//edit profile API
+app.get("/users",)
+
+
+//Messages APIs
+// Retrieve all messages
+app.get('/messages', (req, res) => {
+  const sql = 'SELECT * FROM messages';
+  db.query(sql, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
+// Update a message
+app.put('/messages/:id', (req, res) => {
+  const { message } = req.body;
+  const { id } = req.params;
+  const sql = 'UPDATE messages SET message = ? WHERE id = ?';
+  db.query(sql, [message, id], (err, result) => {
+    if (err) throw err;
+    console.log('Message updated!');
+    res.send(result);
+  });
+});
+
+// Retrieve all messages between two users
+app.get('/messages/:sender/:receiver', (req, res) => {
+  const { sender, receiver } = req.params;
+  const sql = 'SELECT * FROM messages WHERE (sender = ? AND receiver = ?) OR (sender = ? AND receiver = ?) ORDER BY sent_at';
+  db.query(sql, [sender, receiver, receiver, sender], (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
+app.get('/conversations/:user', (req, res) => {
+  const {user} = req.params;
+  db.query(`SELECT DISTINCT user1, user2 FROM conversation WHERE user1='${user}' OR user2='${user}' ORDER BY last_message_sent_at DESC`, (err, result) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Error fetching conversations');
+    } else {
+      res.json(result);
+    }
+  });
+});
+
+app.get('/conversations/:user1/:user2', (req, res) => {
+  const { user1, user2 } = req.params;
+  db.query(`SELECT DISTINCT id,user1,user2 FROM conversation WHERE (user1 = '${user1}' and user2 = '${user2}') OR (user1 = '${user2}' and user2 = '${user1}')`, (err, result) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Error fetching conversations');
+    } else {
+      res.json(result);
+    }
+  });
+});
+
+app.put('/conversations/:id',(req, res) => {
+  const {id} = req.params;
+  const last_message_sent_at = new Date().toISOString();
+  db.query(`UPDATE conversation SET last_message_sent_at = '${last_message_sent_at}' WHERE id = ${id} `, (err, result) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Error fetching conversations');
+    } else {
+      res.json(result);
+    }
+  });
+});
+
+// Create or update a conversation
+app.post('/conversations', (req, res) => {
+  const { sender, receiver } = req.body;
+  const sent_at = new Date();
+  const sql = `INSERT INTO conversation (user1, user2, last_message_sent_at) VALUES (?,?,?)`;
+  db.query(sql, [sender, receiver, sent_at], (err, result) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Error creating or updating conversation');
+    } else {
+      console.log('Conversation created or updated!');
+      res.send(result);
+    }
+  });
+});
+
+app.post('/offers', (req, res) => {
+  const { sender, receiver,message, price } = req.body;
+  const sent_at = new Date();
+  const sql = `INSERT INTO messages (sender, receiver, message, sent_at, offer) VALUES (?,?,?,?,?)`;
+  db.query(sql, [sender, receiver, message, sent_at, price], (err, result) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Error creating or updating conversation');
+    } else {
+      console.log('Conversation created or updated!');
+      res.send(result);
+    }
+  })
+})
+
+
+
+// Start the server
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
+});
 
 // Start the server
 app.listen(8000, () => {
