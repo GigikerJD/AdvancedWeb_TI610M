@@ -4,12 +4,13 @@ import {Link} from "react-router-dom";
 import { useEffect, useState } from "react";
 import Register from "./Register";
 import axios from "axios";
-
+import Footer from "./Footer";
 
 const Login = () => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [msg, setMsg] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,17 +20,17 @@ const Login = () => {
         password
       });
       if (response.data.success) {
-        // Login successful
         console.log("Login successful");
-        // Perform any necessary actions, such as redirecting the user to another page or storing authentication tokens.
+        setMsg("Login successful");
+        setTimeout(() => {
+          window.location.href = "http://localhost:5173/navgames";
+        }, 3000);
       } else {
-        // Login failed
-        console.log("Error: " + response.data.message);
-        // Display an error message to the user, e.g., using state variables.
+        console.log("Login failed");
+        setMsg("Login failed");
       }
     } catch (error) {
       console.log(error);
-      // Handle any network or server errors.
     }
   };
   
@@ -66,12 +67,16 @@ const Login = () => {
                 
                 <button type="button"
                     name="log-button" 
-                    id="log-button" 
+                    id="log-button"
                     onClick={handleSubmit}>
                         Log in
                 </button>
+                <span>{msg}</span>
+
                 Not a member ?<Link to="/home/register" element={<Register/>} id="log">Sign up</Link>
             </form>
+
+            <Footer/>
         </>
     )
 }

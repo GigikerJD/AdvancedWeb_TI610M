@@ -6,33 +6,36 @@ import XBOXS from "./XBOXS";
 import NintendoSwitch from "./Nintendo";
 import myWallpaper from "../images/1up_light.png";
 import Enveloppe from "../images/icons/enveloppe.png";
-import App from "../App";
+import Home from "./Home";
+import "../styles/header.css";
+import "../styles/navgames.css";
+
 
 const NavGames = () => {
     return (
         <>
-            <header id="main-head">
-                <div className="wallpaper">
-                    <Link to="/" element={<App/>}>
-                        <img id="main-icon" src={myWallpaper} alt="1UP"/>
+            <header id="main-head1">
+                <div className="wallpaper1">
+                    <Link to="/" element={<Home/>}>
+                        <img id="main-icon1" src={myWallpaper} alt="1UP"/>
                     </Link>
                 </div>
-                <nav className="main-nav">
+                <nav className="main-nav1">
                     <ul>
                         <li className="item 1">
-                            <Link to="/play5" element={<Playstation5/>}>Playstation 5</Link>
+                            <Link to="/home/play5" element={<Playstation5/>}>Playstation 5</Link>
                         </li>
                         <li className="item 2">
-                            <Link to ="/play4" element={<Playstation4/>}>Playstation 4</Link>
+                            <Link to ="/home/play4" element={<Playstation4/>}>Playstation 4</Link>
                         </li>
                         <li className="item 3">
-                            <Link to="/xbox_one" element={<XBOX1/>}>XBOX One</Link>
+                            <Link to="/home/xbox_one" element={<XBOX1/>}>XBOX One</Link>
                         </li>
                         <li className="item 4">
-                            <Link to="/xbox_s" element={<XBOXS/>}>XBOX S</Link>
+                            <Link to="/home/xbox_s" element={<XBOXS/>}>XBOX S</Link>
                         </li>
                         <li className="item 5">
-                            <Link to="/nintendo_switch" element={<NintendoSwitch/>}>Nintedo Switch</Link>
+                            <Link to="/home/nintendo_switch" element={<NintendoSwitch/>}>Nintedo Switch</Link>
                         </li>
                         <li>
                             <Link>

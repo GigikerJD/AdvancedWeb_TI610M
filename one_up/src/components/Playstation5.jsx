@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios from "axios";
 import { useState, useEffect } from "react";
+import NavGames from "./NavGames";
 
 
 const Playstation5 = () => {
@@ -22,6 +23,7 @@ const Playstation5 = () => {
 
     return(
         <>
+            <NavGames/>
             <h1>Playstation 5 component</h1>
             <table id="ps5-games">
                 <tbody>

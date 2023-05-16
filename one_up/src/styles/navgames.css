@@ -5,38 +5,38 @@
 
 ------------------------------- */
 
-#main-head1 {
+#main-head {
     background-color: #05A457;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
     display: flex;
     top: 0%;
-    height: 100px;
+    height: 0px;
     justify-content: space-between;
     align-items: center;    
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
-.main-nav1 {
+.main-nav {
     padding: 1%;
 }
 
-.main-nav1 ul {
+.main-nav ul {
     list-style-type: none;
     display: flex;
     justify-content: space-around;
     padding-left: 0px;
 }
 
-.main-nav1 ul li {
+.main-nav ul li {
     display: inline-block;
     color: #fff;
     margin: auto;
     text-align: center;
 }
 
-.main-nav1 ul li a{
+.main-nav ul li a{
     display: block;
     padding: 3px 10px;
     text-decoration: none;
@@ -44,7 +44,7 @@
     color:rgb(251, 251, 251);
 }
 
-.main-nav1 ul li a:hover{
+.main-nav ul li a:hover{
     letter-spacing: 2px;
     transition: ease-out 0.25s;
     background-color: white;
@@ -53,7 +53,7 @@
     border-radius: 10px;
 }
 
-.main-nav1 ul li:hover{
+.main-nav ul li:hover{
     letter-spacing: 1.5px;
     transition: all 0.3s ease-in-out;
 }
@@ -70,12 +70,9 @@
 
 /*Image display*/
 
-.wallpaper1 img{
+.wallpaper img{
     display: block;
-    width: 100px;
-    padding-top: 0;
-}
-
-#enveloppe {
-    width: 25px;
+    position: absolute;
+    width: 80px;
+    margin-top: 0%;
 }

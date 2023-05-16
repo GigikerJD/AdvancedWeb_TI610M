@@ -1,12 +1,12 @@
 import { useState } from "react";
-import "../styles/games.css";
+import NavGames from "./NavGames";
 
 const Playstation4 = () => {
 
     const[games, setGames] = useState([]);
 
     useEffect(() => {
-        const fetchGames = async () => {
+        const PS4_games = async () => {
             try{
                 const response = await axios.get("http://localhost:8000/api/ps4");
                 setGames(response.data);
@@ -15,11 +15,12 @@ const Playstation4 = () => {
                 console.log(error);
             }
         };
-        fetchGames();
+        PS4_games();
     }, [])
 
     return(
         <>
+            <NavGames/>
             <h1>Playstation 4 component</h1>
             <table id="ps4-games">
                 <tbody>

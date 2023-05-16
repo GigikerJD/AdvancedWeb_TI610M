@@ -7,18 +7,17 @@ import NintendoSwitch from "./components/Nintendo";
 import "../src/App.css";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import HomePage from "./components/DisplayPage";
+import HomePage from "./components/HomePage";
+import NavGames from "./components/NavGames";
+import Footer from "./components/Footer";
 import Home from "./components/Home";
-
-
-
 
 const App = () => {
   return (
     <>
-      <Home/>
       <Routes>
-        <Route path="/home" element={<HomePage/>}/>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/navgames" element={<NavGames/>}/>
         <Route path="/home/play5" element={<Playstation5/>}/>
         <Route path="/home/play4" element={<Playstation4/>}/>
         <Route path="/home/xbox_s" element={<XBOXS/>}/>
@@ -27,6 +26,8 @@ const App = () => {
         <Route path="/home/login" element={<Login/>}/>
         <Route path="/home/register" element={<Register/>}/>
       </Routes>
+
+      <Footer/>
     </>
   );
 

@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-
+import NavGames from "./NavGames";
 
 const NintendoSwitch = () => {
 
     const [games, setGames] = useState([]);
 
     useEffect(() => {
-        const fetchGames = async () => {
+        const Nintendo_games = async () => {
             try{
                 const response = await axios.get("http://localhost:8000/api/nintendo");
                 setGames(response.data);
@@ -15,11 +15,12 @@ const NintendoSwitch = () => {
                 console;log(error);
             }
         };
-        fetchGames();
+        Nintendo_games();
     }, [])
 
     return(
         <>
+            <NavGames/>
             <h1>Nintendo Switch component</h1>
             <table id="nintendo-games">
                 <tbody>

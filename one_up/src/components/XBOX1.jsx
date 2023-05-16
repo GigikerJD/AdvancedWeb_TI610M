@@ -1,4 +1,5 @@
 import { useState } from "react";
+import NavGames from "./NavGames";
 
 
 const XBOX1 = () => {
@@ -6,7 +7,7 @@ const XBOX1 = () => {
     const [games, setGames] = useState([]);
 
     useEffect(() => {
-        const fetchGames = async () => {
+        const XBOX1_games = async () => {
             try{
                 const response = await axios.get("http://localhost:8000/api/xbox1");
                 setGames(response.data);
@@ -15,11 +16,12 @@ const XBOX1 = () => {
                 console.log(error);
             }
         };
-        fetchGames();
+        XBOX1_games();
     }, [])
 
     return(
         <>
+            <NavGames/>
             <h1>XBox One component</h1>
             <table id="xbox1-games">
                 <tbody>
