@@ -102,7 +102,7 @@ const MessageForm = ({sender, receiver}) => {
             {sender === user2 && (
               <form>
                 <label htmlFor="offerPrice">Offer price:</label>
-                <input type="number" name="offerPrice" id="offerPrice" ref={offerPriceRef} />
+                <input type="number" name="offerPrice" id="offerPrice" ref={offerPriceRef} required/>
                 <button type="button" onClick={handleNewOffer}>
                   Create New Offer
               </button>

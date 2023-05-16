@@ -11,6 +11,7 @@ import HomePage from "./components/HomePage";
 import NavGames from "./components/NavGames";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
+import Contact from "./components/Contact";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/home/nintendo_switch" element={<NintendoSwitch/>}/>
         <Route path="/home/login" element={<Login/>}/>
         <Route path="/home/register" element={<Register/>}/>
+        <Route path="/Edit-Profile" element={<Contact/>}></Route>
       </Routes>
 
       <Footer/>

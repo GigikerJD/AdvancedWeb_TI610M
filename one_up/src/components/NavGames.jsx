@@ -12,6 +12,7 @@ import {Routes, Route} from "react-router-dom";
 import "../styles/header.css";
 import "../styles/navgames.css";
 import UserProfile from "../images/icons/user.png";
+import RedirectButtons from "./EditProfile";
  
 
 const NavGames = () => {
@@ -50,10 +51,12 @@ const NavGames = () => {
                         <li>
                             <Link>
                                 <img id="enveloppe" src={Enveloppe} alt="messages"/>
+                                
                             </Link>
                         </li>
                         <li>
                             <img id="profile" src={UserProfile} alt="user" />
+                            <RedirectButtons/>
                         </li>
                     </ul>
                 </nav>

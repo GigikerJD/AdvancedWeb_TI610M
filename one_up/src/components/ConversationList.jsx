@@ -1,8 +1,9 @@
 import Conversation from "./Conversation";
+import MessageForm from "./MessageForm";
 import {useState, useEffect} from "react-router-dom";
 
 
-const Conversation = ({user}) => {
+const ConversationList = ({user}) => {
 
     const [conversations, setConversations] = useState([]);
     const [selectedConversation, setSelectedConversation] = useState(null);
@@ -42,3 +43,5 @@ const Conversation = ({user}) => {
         </>
     )
 }
+
+export default ConversationList;

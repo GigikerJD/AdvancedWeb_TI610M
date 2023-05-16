@@ -10,6 +10,7 @@ import NintendoSwitch from "./Nintendo";
 import Home from "./Home";
 import Login from "./Login";
 import Register from "./Register";
+import "../styles/games.css";
 
 
 const Playstation5 = () => {
@@ -42,8 +43,8 @@ const Playstation5 = () => {
                 <Route path="/home/login" element={<Login/>}/>
                 <Route path="/home/register" element={<Register/>}/>
             </Routes>
-            <h1>Playstation 5 component</h1>
             <table id="ps5-games">
+                <caption>Playstation 5 games</caption>
                 <tbody>
                     <tr>
                         <td>Title</td>
@@ -56,7 +57,7 @@ const Playstation5 = () => {
                         return(
                             <tr key={index}>
                                 <td>{game.title}</td>
-                                <td>{game.price}</td>
+                                <td>{game.price} £</td>
                                 <td>{game.gameTag}</td>
                                 <td>{game.quantity}</td>
                             </tr>

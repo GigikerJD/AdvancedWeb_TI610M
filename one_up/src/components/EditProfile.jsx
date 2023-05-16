@@ -4,10 +4,9 @@ import {useState, useEffect} from "react";
 
 const RedirectButtons = () => {
 
-    useEffect(() => {
-        const edit = document.getElementsByClassName("box");
-        edit.onClick = window.location.href = "";
-    })
+    const redirectToEditProfile = () => {
+        window.location.href = "/Edit-Profile";
+    }
 
     return(
         <>

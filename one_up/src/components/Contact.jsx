@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "../styles/editprofile.css";
+import NavGames from "./NavGames"
+
+
 
 const Contact = () => {
-    
+  
     const [formValues, setFormValues] = useState({ID:'',Username:'',Password:'', firstname: '', lastname: '', birthdate: '',emailAddress: '',address:'',postcode:'',favoriteGametags: [] });
     const [editableField, setEditableField] = useState('');
     const [isEditing, setIsEditing] = useState(false);
@@ -25,12 +28,13 @@ const Contact = () => {
     }
 
     useEffect(() => {
-        axios.get("http://localhost:8000/users").then((response) => {
-          const dateString=response.data[0].Birthdate;
+        axios.get("http://localhost:8000/accounts").then((response) => {
+          const dateString=response.data[0].birthdate;
+          console.log(dateString);
           const date=new Date(dateString);
           const formattedDate=date.toISOString().slice(0,10);
-          setFormValues({...formValues,birthdate:formattedDate,Username:response.data[0].Username,Password:response.data[0].Password,address:response.data[0].Address,ID:response.data[0].ID,firstname:response.data[0].Firstname,lastname:response.data[0].Lastname,emailAddress:response.data[0].Mail,postcode:response.data[0].Postcode});
-          console.log(response.data[0].Birthdate)
+          setFormValues({...formValues,birthdate:formattedDate,Username:response.data[0].username,Password:response.data[0].password,address:response.data[0].Address,firstname:response.data[0].firstname,lastname:response.data[0].lastname,emailAddress:response.data[0].email,postcode:response.data[0].postcode});
+          console.log(formattedDate)
         });
     }, []);
 
@@ -46,6 +50,7 @@ const Contact = () => {
         firstName: formValues.firstName,
         lastName: formValues.lastName,
         birthDate: formValues.birthDate,
+        password: formValues.password,
         emailAddress: formValues.emailAddress,
         address: formValues.address,
         city: formValues.city,
@@ -57,8 +62,8 @@ const Contact = () => {
         setEditableField('');
         console.log(user.ID)
         console.log(user.postcode)
-        axios.put(`http://localhost:8000/users/`, {
-          Mail:user.emailAddress,Address:user.address,Postcode:user.postcode,ID:user.ID
+        axios.put("http://localhost:8000/accounts", {
+          Mail:user.emailAddress,city:user.city,Postcode:user.postcode,Password:user.password
       })
       };
     
@@ -70,7 +75,9 @@ const Contact = () => {
       };
 
     return(
+       
         <>
+         <NavGames/>
             <form id="edit-form "onSubmit={handleSubmit}>
                 <label>
                   First name:
@@ -88,8 +95,14 @@ const Contact = () => {
                 </label>
                 <br />
                 <label>
+                  Password:
+                  <input type="password" name="Password" value={formValues.Password} onChange={handleChange} disabled={editableField !== 'Password'} />
+                  {editableField !== 'Password' && <button className="edit-button" onClick={() => handleEdit('Password')}>Edit</button>}
+                </label>
+                <br />
+                <label>
                   Mail Address:
-                  <input type="text" name="emailAddress" value={formValues.emailAddress} onChange={handleChange} disabled={editableField !== 'emailAddress'} />
+                  <input type="email" name="emailAddress" value={formValues.emailAddress} onChange={handleChange} disabled={editableField !== 'emailAddress'} />
                   {editableField !== 'emailAddress' && <button className="edit-button" onClick={() => handleEdit('emailAddress')}>Edit</button>}
                 </label>
                 <br />
@@ -149,3 +162,5 @@ const Contact = () => {
         </>
     )
 }
+
+export default Contact;

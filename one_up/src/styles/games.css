@@ -1,25 +1,26 @@
-.title {
-    color: black;
-    padding-top: 7vh;
+/* each css for games component */
+
+
+/* PS5 */
+#ps5-games{
+    margin: auto;
+    margin-top: 10vh;
+    padding-top: 10vh;
+    border-collapse:collapse;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 75%;
+    color: white;
+    table-layout: auto;
+}
+
+#ps5-games caption {
+    padding-bottom: 1em;
+}
+
+#ps5-games tr td {
+    border: 3px solid #333;
+    border-radius: 10px;
     text-align: center;
-    font-family:Arial, Helvetica, sans-serif;
-    font-size: 2rem;
+    padding: 1em;
 }
 
-
-.images {
-    margin:auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
-.images > div{
-    height: 5vh;
-    width: 30vh;
-    position: absolute;
-    background-color: #fff;
-}
-.images > div:nth-child(n){
-    left: -10%;
-}

@@ -2,6 +2,7 @@ import express from "express";
 import mysql from "mysql2";
 import cors from "cors";
 import bcrypt from "bcrypt";
+import bodyParser from "body-parser";
 
 
 const app = express();
@@ -66,7 +67,7 @@ app.post('/login', async (req, res) => {
 //In case, we may need to all some accounts
 app.get('/accounts', async (req, res) => {
   try{
-    const accounts = await conn.query("select * from registereduser");
+    const [accounts, fields] = await conn.query("select * from registereduser");
     res.json(accounts);
   }catch(error){
     console.error(error);
@@ -74,6 +75,17 @@ app.get('/accounts', async (req, res) => {
   }
 });
   
+app.put('/accounts', async (req, res) => {
+  const {Mail, city,Postcode,password} = req.body;
+  console.log(Mail)
+  const sql = 'UPDATE registereduser SET email = ?,city = ?,postcode = ?,password = ? Where username="user1"';
+  conn.query(sql, [Mail,city,Postcode,password], (err, result) => {
+    if (err) throw err;
+    console.log('Message updated!');
+    res.send(result);
+  });
+});
+
 
 app.get("/api/ps5", async (req, res) => {
   try{
@@ -126,10 +138,12 @@ app.get("/api/nintendo", async(req, res) => {
 })
 
 //edit profile API
-app.get("/users",)
+
 
 
 //Messages APIs
+
+
 // Retrieve all messages
 app.get('/messages', (req, res) => {
   const sql = 'SELECT * FROM messages';
@@ -229,13 +243,6 @@ app.post('/offers', (req, res) => {
   })
 })
 
-
-
-// Start the server
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-});
 
 // Start the server
 app.listen(8000, () => {
