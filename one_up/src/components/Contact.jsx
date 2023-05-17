@@ -78,7 +78,7 @@ const Contact = () => {
        
         <>
          <NavGames/>
-            <form id="edit-form "onSubmit={handleSubmit}>
+            <form class="formulaire" id="edit-form "onSubmit={handleSubmit}>
                 <label>
                   First name:
                   <input type="text" name="firstname" value={formValues.firstname} onChange={handleChange} disabled={editableField !== 'firstname'} />
@@ -104,12 +104,6 @@ const Contact = () => {
                   Mail Address:
                   <input type="email" name="emailAddress" value={formValues.emailAddress} onChange={handleChange} disabled={editableField !== 'emailAddress'} />
                   {editableField !== 'emailAddress' && <button className="edit-button" onClick={() => handleEdit('emailAddress')}>Edit</button>}
-                </label>
-                <br />
-                <label>
-                  Address:
-                  <input type="text" name="address" value={formValues.address} onChange={handleChange} disabled={editableField !== 'address'} />
-                  {editableField !== 'address' && <button className="edit-button" onClick={() => handleEdit('address')}>Edit</button>}
                 </label>
                 <br />
                 <label>

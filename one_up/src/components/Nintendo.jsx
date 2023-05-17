@@ -52,7 +52,7 @@ const NintendoSwitch = () => {
                         return(
                             <tr key={index}>
                                 <td>{game.title}</td>
-                                <td>{game.price}</td>
+                                <td>{game.price} £</td>
                                 <td>{game.gameTag}</td>
                                 <td>{game.quantity}</td>
                             </tr>

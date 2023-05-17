@@ -56,7 +56,7 @@ app.post('/login', async (req, res) => {
     if (result.length > 0) {
       res.json({ success: true, message: "Login successful" });
     } else {
-      res.status(401).json({ success: false, message: "Incorrect username or password" });
+      res.json({ success: false, message: "Incorrect username or password" });
     }
   } catch (error) {
     console.error(error);
@@ -145,103 +145,131 @@ app.get("/api/nintendo", async(req, res) => {
 
 
 // Retrieve all messages
-app.get('/messages', (req, res) => {
+app.get('/messages', async (req, res) => {
   const sql = 'SELECT * FROM messages';
-  db.query(sql, (err, result) => {
-    if (err) throw err;
-    res.send(result);
-  });
+  try{
+    const [accounts, fields] = await conn.query(sql); 
+    res.json(accounts);
+  }catch(error){
+    console.error(error);
+    res.status(500).json({error : "Internal Backend Service"})
+  }
 });
 
 // Update a message
-app.put('/messages/:id', (req, res) => {
+app.put('/messages/:id', async (req, res) => {
   const { message } = req.body;
   const { id } = req.params;
   const sql = 'UPDATE messages SET message = ? WHERE id = ?';
-  db.query(sql, [message, id], (err, result) => {
-    if (err) throw err;
-    console.log('Message updated!');
-    res.send(result);
-  });
+  try{
+    const [accounts, fields] = await conn.query(sql, [message, id]);
+    res.json(accounts);
+  }catch(error){
+    console.error(error);
+    res.status(500).json({error : "Internal Backend Service"})
+  }
 });
 
 // Retrieve all messages between two users
-app.get('/messages/:sender/:receiver', (req, res) => {
+app.get('/messages/:sender/:receiver', async (req, res) => {
   const { sender, receiver } = req.params;
   const sql = 'SELECT * FROM messages WHERE (sender = ? AND receiver = ?) OR (sender = ? AND receiver = ?) ORDER BY sent_at';
-  db.query(sql, [sender, receiver, receiver, sender], (err, result) => {
-    if (err) throw err;
+  try{
+    const [accounts, fields] = await conn.query(sql, [sender, receiver, receiver, sender]);
+    res.json(accounts);
+  }catch(error){
+    console.error(error);
+    res.status(500).json({error : "Internal Backend Service"})
+  }
+});
+
+/*
+app.get('/conversation/:user', async (req, res) => {
+  const { user } = req.params;
+  const sql = `SELECT DISTINCT user1, user2 FROM conversation WHERE user1='${user}' OR user2='${user}' ORDER BY last_message_sent_at DESC`;
+  try {
+    const [result, fields] = await conn.query(sql);
     res.send(result);
-  });
+  } catch (err) {
+    console.error(error);
+    res.status(500).send('Error fetching conversations');
+  }
+});*/
+
+app.get('/conversation/:user', async (req, res) => {
+  const { user } = req.params;
+  try{
+    const [accounts, fields] = await conn.query(`SELECT * FROM conversation WHERE user1='${user}' OR user2='${user}'`);
+    res.json(accounts);
+  }catch(error){
+    console.error(error);
+    res.status(500).json({error : "Internal Backend Service"})
+  }
 });
 
-app.get('/conversations/:user', (req, res) => {
-  const {user} = req.params;
-  db.query(`SELECT DISTINCT user1, user2 FROM conversation WHERE user1='${user}' OR user2='${user}' ORDER BY last_message_sent_at DESC`, (err, result) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send('Error fetching conversations');
-    } else {
-      res.json(result);
-    }
-  });
-});
-
-app.get('/conversations/:user1/:user2', (req, res) => {
+app.get('/conversation/:user1/:user2', async (req, res) => {
   const { user1, user2 } = req.params;
-  db.query(`SELECT DISTINCT id,user1,user2 FROM conversation WHERE (user1 = '${user1}' and user2 = '${user2}') OR (user1 = '${user2}' and user2 = '${user1}')`, (err, result) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send('Error fetching conversations');
-    } else {
-      res.json(result);
+  try{
+    const [accounts, fields] = await conn.query(`SELECT DISTINCT id,user1,user2 FROM conversation WHERE (user1 = '${user1}' and user2 = '${user2}') OR (user1 = '${user2}' and user2 = '${user1}')`);
+      res.json(accounts);
+    }catch(error){
+      console.error(error);
+      res.status(500).json({error : "Internal Backend Service"})
     }
   });
-});
 
-app.put('/conversations/:id',(req, res) => {
+
+app.put('/conversation/:id', async (req, res) => {
   const {id} = req.params;
   const last_message_sent_at = new Date().toISOString();
-  db.query(`UPDATE conversation SET last_message_sent_at = '${last_message_sent_at}' WHERE id = ${id} `, (err, result) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send('Error fetching conversations');
-    } else {
-      res.json(result);
-    }
-  });
+  try{
+    const [accounts, fields] = await conn.query(`UPDATE conversation SET last_message_sent_at = '${last_message_sent_at}' WHERE id = ${id} `);
+    res.json(accounts);
+  }catch(error){
+    console.error(error);
+    res.status(500).json({error : "Internal Backend Service"})
+  }
 });
 
-// Create or update a conversation
-app.post('/conversations', (req, res) => {
+// Create a conversation
+app.post('/conversation', async (req, res) => {
   const { sender, receiver } = req.body;
   const sent_at = new Date();
   const sql = `INSERT INTO conversation (user1, user2, last_message_sent_at) VALUES (?,?,?)`;
-  db.query(sql, [sender, receiver, sent_at], (err, result) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send('Error creating or updating conversation');
-    } else {
-      console.log('Conversation created or updated!');
-      res.send(result);
-    }
-  });
+  try{
+    const [accounts, fields] = await conn.query(sql, [sender, receiver, sent_at]);
+    res.json(accounts);
+  }catch(error){
+    console.error(error);
+    res.status(500).json({error : "Internal Backend Service"})
+  }
 });
 
-app.post('/offers', (req, res) => {
+app.post('/messages', async (req, res) => {
+  const { sender, receiver, message, offer} = req.body;
+  const sent_at = new Date();
+  const sql = `INSERT INTO messages (sender, receiver, message, sent_at, offer) VALUES (?, ?, ?, ?, ?)`;
+  try{
+    const [accounts, fields] = await conn.query(sql, [sender, receiver, message, sent_at, offer]);
+    res.json(accounts);
+  }catch(error){
+    console.error(error);
+    res.status(500).json({error : "Internal Backend Service"})
+  }
+});
+
+app.post('/offers', async (req, res) => {
   const { sender, receiver,message, price } = req.body;
   const sent_at = new Date();
   const sql = `INSERT INTO messages (sender, receiver, message, sent_at, offer) VALUES (?,?,?,?,?)`;
-  db.query(sql, [sender, receiver, message, sent_at, price], (err, result) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send('Error creating or updating conversation');
-    } else {
-      console.log('Conversation created or updated!');
-      res.send(result);
-    }
-  })
-})
+  try{
+    const [accounts, fields] = await conn.query(sql, [sender, receiver, message, sent_at, price]);
+    res.json(accounts);
+  }catch(error){
+    console.error(error);
+    res.status(500).json({error : "Internal Backend Service"})
+  }
+});
 
 
 // Start the server

@@ -1,16 +1,16 @@
 import Conversation from "./Conversation";
 import MessageForm from "./MessageForm";
-import {useState, useEffect} from "react-router-dom";
+import {useState, useEffect} from "react";
+import NavGames from "./NavGames";
 
 
 const ConversationList = ({user}) => {
-
     const [conversations, setConversations] = useState([]);
     const [selectedConversation, setSelectedConversation] = useState(null);
     const [otherUser, setOtherUser] = useState(null);
 
     useEffect(() => {
-        fetch("http://localhost:8000/conversations/${user}")
+        fetch(`http://localhost:8000/conversation/${user}`)
             .then((response) => response.json())
             .then((data) => setConversations(data))
             .catch((error) => console.log(error));
@@ -18,11 +18,13 @@ const ConversationList = ({user}) => {
 
     const handleConversationSelect = (conversation) => {
         setSelectedConversation(conversation);
-        setOtherUser(conversation.useer1 === user ? conversation.user2 : conversation.user1);
+        setOtherUser(conversation.user1 === user ? conversation.user2 : conversation.user1);
     }
+
 
     return(
         <>
+        <NavGames></NavGames>
             <h2>Conversations</h2>
             <ul>
               {conversations.map((conversation) => (

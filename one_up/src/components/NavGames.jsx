@@ -49,14 +49,15 @@ const NavGames = () => {
                             <Link to="/home/nintendo_switch" element={<NintendoSwitch/>}>Nintendo Switch</Link>
                         </li>
                         <li>
-                            <Link>
+                            <Link to="/Conversation">
                                 <img id="enveloppe" src={Enveloppe} alt="messages"/>
                                 
                             </Link>
                         </li>
                         <li>
+                            <Link to="/Edit-Profile">
                             <img id="profile" src={UserProfile} alt="user" /><br/>
-                            <RedirectButtons/>
+                            </Link>
                         </li>
                     </ul>
                 </nav>

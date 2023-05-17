@@ -26,7 +26,7 @@ const Login = () => {
           window.location.href = "http://localhost:5173/navgames";
         }, 3000);
       } else {
-        console.log("Login failed");
+        alert("Login failed");
         setMsg("Login failed");
       }
     } catch (error) {

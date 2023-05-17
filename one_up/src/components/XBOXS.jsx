@@ -39,8 +39,8 @@ const XBOXS = () => {
                 <Route path="/home/login" element={<Login/>}/>
                 <Route path="/home/register" element={<Register/>}/>
             </Routes>
-            <h1>XBoxS component</h1>
             <table id="xboxs-games">
+                <caption>XBOX S games</caption>
                 <tbody>
                     <tr>
                         <td>Title</td>
@@ -53,7 +53,7 @@ const XBOXS = () => {
                         return(
                             <tr key={index}>
                                 <td>{game.title}</td>
-                                <td>{game.price}</td>
+                                <td>{game.price} £</td>
                                 <td>{game.gameTag}</td>
                                 <td>{game.quantity}</td>
                             </tr>

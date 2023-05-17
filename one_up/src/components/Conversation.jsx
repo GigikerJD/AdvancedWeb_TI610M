@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 
 
+
 const Conversation = ({sender, receiver}) => {
 
     const [messages, setMessages] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:8000/messages/${sender}/${receiver}")
+        fetch(`http://localhost:8000/messages/${sender}/${receiver}`)
             .then((response) => response.json())
-            .then((data) => setMessages(data))
-            .then((error) => console.log(error));
+            .then((data) => setMessages(data));
     }, [messages]);
 
     const handleAcceptOffer = (offer) => {
@@ -31,7 +31,7 @@ const Conversation = ({sender, receiver}) => {
                 ) : (
                 <div>
                     <p>{message.sender}: {message.message}</p>
-                    <p>{message.sent_at}</p>
+                    <p>{new Date(message.sent_at).toISOString().slice(0,10)}</p>
                 </div>
                 )}
             </div>

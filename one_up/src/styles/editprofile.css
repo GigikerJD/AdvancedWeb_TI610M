@@ -1,16 +1,17 @@
-#edit-form {
+form.formulaire {
   padding: 25px;
   margin: 25px;
+  margin-bottom: 100px;
   box-shadow: 0 2px 5px #000;
   background: #222;
   max-width: 400px;
   width: 100%;
   border-radius: 5px;
-  display: flex;
+  display: inline-block;
   flex-direction: column;
 }
 
-#edit-form label {
+label {
   display: flex; /* Ajout d'une propriété flex pour aligner les éléments */
   justify-content: space-between; /* Ajout d'une propriété pour espacer les éléments horizontalement */
   align-items: center; /* Ajout d'une propriété pour aligner les éléments verticalement */
@@ -32,13 +33,13 @@ input[type="date"] {
   border-radius: 3px;
 }
 
-#edit-profile input[type="text"]::placeholder,
-#edit-profile input[type="number"]::placeholder,
-#edit-profile input[type="date"]::placeholder {
+input[type="text"]::placeholder,
+input[type="number"]::placeholder,
+input[type="date"]::placeholder {
   color: #666;
 }
 
-#edit-profile button[type="submit"] {
+button[type="submit"] {
   width: 100%;
   padding: 10px;
   border: none;
@@ -51,11 +52,11 @@ input[type="date"] {
   border-radius: 5px;
 }
 
-#edit-profile button[type="submit"]:hover {
+button[type="submit"]:hover {
   background: #05A457;
 }
 
-#edit-profile button[type="button"],
+button[type="button"],
 .cancel-button {
   width: 100%;
   padding: 10px;
@@ -69,11 +70,14 @@ input[type="date"] {
   border-radius: 5px;
 }
 
-#edit-profile button[type="button"]:hover,
+button[type="button"]:hover,
 .button-cancel:hover {
   background: #333;
 }
 
+body {
+  background-color: #05A457;
+}
 
 .edit-button {
   background: #333;

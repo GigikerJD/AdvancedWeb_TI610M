@@ -40,8 +40,8 @@ const Playstation4 = () => {
                 <Route path="/home/login" element={<Login/>}/>
                 <Route path="/home/register" element={<Register/>}/>
             </Routes>
-            <h1>Playstation 4 component</h1>
             <table id="ps4-games">
+                <caption>Playstation 4 games</caption>
                 <tbody>
                     <tr>
                         <td>Title</td>
@@ -54,7 +54,7 @@ const Playstation4 = () => {
                         return(
                             <tr key={index}>
                                 <td>{game.title}</td>
-                                <td>{game.price}</td>
+                                <td>{game.price} £</td>
                                 <td>{game.gameTag}</td>
                                 <td>{game.quantity}</td>
                             </tr>

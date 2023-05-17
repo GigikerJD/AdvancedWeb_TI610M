@@ -1,4 +1,4 @@
-import { useStaten, useState, useRef } from "react"
+import { useStaten, useState, useEffect, useRef } from "react"
 
 
 const MessageForm = ({sender, receiver}) => {
@@ -23,14 +23,14 @@ const MessageForm = ({sender, receiver}) => {
         })
             .then((response) => {
                 if(response.ok) {
-                    fetch('http://localhost:8000/conversations/${sender}/${receiver}')
+                    fetch('http://localhost:8000/conversation/${sender}/${receiver}')
                         .then((response) => response.json())
                         .then((data) => {
                             // If the conversation exists, update it
                             if(data.length > 0){
                                 const conversationId = data[0].id;
                                 console.log(conversationId);
-                                fetch(`http://localhost:3001/conversations/${conversationId}`, {
+                                fetch(`http://localhost:8000/conversation/${conversationId}`, {
                                     method: "PUT",
                                     headers: { "Content-Type": "application/json" },
                                     })
@@ -38,7 +38,7 @@ const MessageForm = ({sender, receiver}) => {
                                     .then((data) => console.log(data))
                                     .catch((error) => console.error(error));
                             }else{
-                                fetch(`http://localhost:8000/conversations`, {
+                                fetch(`http://localhost:8000/conversation`, {
                                   method: "POST",
                                   headers: { "Content-Type": "application/json" },
                                   body: JSON.stringify({ user1: sender, user2: receiver}),
@@ -61,7 +61,7 @@ const MessageForm = ({sender, receiver}) => {
         const offerPrice = offerPriceRef.current.value;
     
         // Send offer to server
-        fetch('http://localhost:3001/offers', {
+        fetch('http://localhost:8000/offers', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ const MessageForm = ({sender, receiver}) => {
     };
 
     useEffect(() => {
-        fetch(`http://localhost:3001/conversations/${sender}/${receiver}`)
+        fetch(`http://localhost:8000/conversation/${sender}/${receiver}`)
           .then((response) => response.json())
           .then((data) => {
             setUser2(data[0].user2);

@@ -12,6 +12,8 @@ import NavGames from "./components/NavGames";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Contact from "./components/Contact";
+import ConversationList from "./components/ConversationList";
+import Achat from "./components/Achat";
 
 const App = () => {
   return (
@@ -27,6 +29,8 @@ const App = () => {
         <Route path="/home/login" element={<Login/>}/>
         <Route path="/home/register" element={<Register/>}/>
         <Route path="/Edit-Profile" element={<Contact/>}></Route>
+        <Route path="/Conversation" element={<ConversationList user="user1"/>}/>
+        <Route path="/Achat" element={<Achat/>} />
       </Routes>
 
       <Footer/>
